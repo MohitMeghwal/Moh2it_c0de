@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d12">
+<meta name="description" content="Moh2it c0de - simple visual code preview workspace">
+<link rel="manifest" href="manifest.json">
+<title>Moh2it c0de</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;width:100%;height:100%;background:#080a0f;color:#f4f5f7;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}button,input,textarea{font:inherit}button{border:0;color:inherit;cursor:pointer}.app{height:100dvh;overflow:hidden;background:radial-gradient(circle at 80% -10%,#1c2535 0,#0b0d12 38%,#080a0f 75%)}.screen{height:100%;display:none;flex-direction:column}.screen.active{display:flex}.top{height:64px;min-height:64px;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #20242d;background:#0b0d12e8;backdrop-filter:blur(18px);z-index:5}.brand{font-weight:800;letter-spacing:-.5px;font-size:20px}.brand b{color:#8ef0b0}.spacer{flex:1}.icon,.primary,.ghost,.danger,.tab,.device{background:#171b23;border:1px solid #282e39;border-radius:12px;padding:9px 12px}.icon{width:42px;height:42px;padding:0;display:grid;place-items:center}.primary{background:#eaf2ec;color:#10140f;border-color:#eaf2ec;font-weight:750}.danger{background:#2a1518;border-color:#4a2328;color:#ff9da5}.ghost:hover,.icon:hover,.tab:hover,.device:hover{background:#202530}.content{width:min(1100px,100%);margin:auto;padding:22px 16px 80px;overflow:auto}.hero{padding:18px 0 24px}.hero h1{font-size:clamp(32px,8vw,58px);line-height:.98;margin:0 0 12px;letter-spacing:-2px}.hero p{margin:0;color:#9ba3b1;max-width:600px;line-height:1.55}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 26px}.action{padding:18px;border-radius:18px;text-align:left;background:linear-gradient(145deg,#171c25,#10131a);border:1px solid #292f3a}.action strong{display:block;font-size:16px;margin-bottom:6px}.action span{display:block;color:#8e97a7;font-size:13px;line-height:1.35}.section-title{display:flex;align-items:center;justify-content:space-between;margin:20px 0 10px}.section-title h2{font-size:15px;margin:0;color:#b9c0cc}.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.project{min-height:135px;padding:16px;border:1px solid #252b35;background:#11151c;border-radius:18px;text-align:left;position:relative}.project h3{margin:0 30px 8px 0;font-size:17px}.project p{margin:0;color:#788291;font-size:12px}.project .more{position:absolute;right:10px;top:10px;background:#1c212a;border-radius:10px;width:34px;height:34px}.empty{border:1px dashed #303642;border-radius:18px;padding:28px;text-align:center;color:#7f8896}.empty strong{display:block;color:#c9ced6;margin-bottom:6px}.editorbar{display:flex;gap:8px;align-items:center;overflow:auto;padding:10px 12px;border-bottom:1px solid #20242d;background:#0c0f15}.projectname{font-weight:750;white-space:nowrap;max-width:38vw;overflow:hidden;text-overflow:ellipsis}.modebar{display:flex;gap:7px;margin-left:auto}.tab.active,.device.active{background:#eaf2ec;color:#10140f;border-color:#eaf2ec;font-weight:750}.workspace{flex:1;min-height:0;display:flex;flex-direction:column}.codeview,.previewview{display:none;height:100%;min-height:0}.codeview.active,.previewview.active{display:flex;flex-direction:column}.searchbar{padding:9px 10px;border-bottom:1px solid #20242d;background:#0d1016;display:flex;gap:7px}.searchbar input{min-width:0;flex:1;background:#171b23;color:#fff;border:1px solid #2b313c;border-radius:10px;padding:10px 12px;outline:none}.searchbar input:focus{border-color:#7dd89a}.searchcount{font-size:11px;color:#7f8896;min-width:48px;display:grid;place-items:center}.codewrap{flex:1;min-height:0;display:flex;overflow:hidden;background:#0a0c10}.lines{width:45px;flex:none;padding:13px 7px 13px 0;text-align:right;color:#4f5764;background:#0c0f14;border-right:1px solid #1c2129;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;overflow:hidden;user-select:none}.editor{flex:1;min-width:0;height:100%;resize:none;border:0;outline:0;background:#0a0c10;color:#dfe5ee;padding:13px 14px;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2;white-space:pre;overflow:auto}.editor::selection{background:#31533e}.previewtools{padding:9px 10px;display:flex;gap:7px;overflow:auto;border-bottom:1px solid #20242d;background:#0c0f15}.previewarea{flex:1;min-height:0;overflow:auto;background:#171a20;padding:16px;display:flex;justify-content:center;align-items:flex-start}.deviceframe{background:white;box-shadow:0 18px 50px #0008;transition:width .2s,height .2s;position:relative}.deviceframe.mobile{width:390px;min-height:760px}.deviceframe.desktop{width:1280px;min-height:720px}.deviceframe.full{width:100%;height:100%;min-height:100%}.deviceframe iframe{display:block;width:100%;height:100%;min-height:inherit;border:0;background:white}.bottomhint{padding:7px 12px;background:#0b0d12;border-top:1px solid #20242d;color:#626b78;font-size:11px;text-align:center}.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:30}.modal.show{display:flex}.modalbox{width:min(440px,100%);background:#11151c;border:1px solid #2a303b;border-radius:22px;padding:20px;box-shadow:0 30px 80px #0009}.modalbox h3{margin:0 0 8px}.modalbox p{color:#8c95a3;font-size:13px}.modalbox input{width:100%;padding:13px;border-radius:12px;border:1px solid #303642;background:#0b0e13;color:#fff;outline:0}.modalactions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.menu{position:fixed;right:12px;top:58px;width:190px;background:#11151c;border:1px solid #2a303b;border-radius:15px;padding:6px;display:none;z-index:20;box-shadow:0 20px 50px #0008}.menu.show{display:block}.menu button{display:block;width:100%;padding:11px;text-align:left;background:transparent;border-radius:10px}.menu button:hover{background:#1c212a}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#eef5ef;color:#10140f;padding:10px 14px;border-radius:12px;font-size:13px;font-weight:700;transition:.2s;z-index:50}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:520px){.actions{grid-template-columns:1fr}.content{padding-top:10px}.hero h1{font-size:40px}.project{min-height:120px}.top{height:58px;min-height:58px}.deviceframe.desktop{width:1000px}.previewarea{justify-content:flex-start}.editor{font-size:12px}.lines{font-size:12px;width:40px}}@media(min-width:800px){.content{padding-left:24px;padding-right:24px}.top{padding-left:24px;padding-right:24px}}
+</style>
+</head>
+<body>
+<div class="app">
+<section id="home" class="screen active">
+<header class="top"><div class="brand">Moh<span>2</span>it <b>c0de</b></div><div class="spacer"></div><button class="icon" id="homeMenu">⋮</button></header>
+<main class="content">
+<div class="hero"><h1>Build it.<br>See it.</h1><p>A simple visual code workspace for testing HTML, CSS and JavaScript directly on your phone.</p></div>
+<div class="actions">
+<button class="action" id="newProject"><strong>＋ New Project</strong><span>Create a separate workspace and save it on this device.</span></button>
+<button class="action" id="playground"><strong>◈ Quick Preview</strong><span>Try code instantly without creating a project.</span></button>
+</div>
+<div class="section-title"><h2>Your Projects</h2><button class="ghost" id="importBtn">Import</button></div>
+<div id="projects" class="projects"></div>
+</main>
+<div class="menu" id="homeMenuBox"><button id="exportAll">Export all projects</button><button id="installBtn">Install app</button><button id="clearAll">Delete all projects</button></div>
+<input id="fileInput" type="file" accept="application/json" hidden>
+</section>
+
+<section id="editorScreen" class="screen">
+<header class="top"><button class="icon" id="backHome">‹</button><div class="projectname" id="editorTitle">Project</div><div class="spacer"></div><button class="icon" id="saveBtn">✓</button><button class="icon" id="editorMenuBtn">⋮</button></header>
+<div class="editorbar"><button class="tab active" data-view="code">Code</button><button class="tab" data-view="preview">Preview</button><div class="modebar" id="modebar" style="display:none"><button class="device active" data-device="mobile">Mobile</button><button class="device" data-device="desktop">Desktop</button><button class="device" data-device="full">Full</button></div></div>
+<div class="workspace">
+<div class="codeview active" id="codeView">
+<div class="searchbar"><input id="searchInput" placeholder="Search in code…"><button class="ghost" id="prevMatch">↑</button><button class="ghost" id="nextMatch">↓</button><div class="searchcount" id="searchCount"></div></div>
+<div class="codewrap"><div class="lines" id="lines"></div><textarea id="editor" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea></div>
+<div class="bottomhint">Tip: search → jump to the exact place. Changes are saved locally.</div>
+</div>
+<div class="previewview" id="previewView">
+<div class="previewtools"><button class="device active" data-device="mobile">Mobile</button><button class="device" data-device="desktop">Desktop</button><button class="device" data-device="full">Full</button><div class="spacer"></div><button class="ghost" id="refreshPreview">↻ Refresh</button></div>
+<div class="previewarea"><div class="deviceframe mobile" id="deviceFrame"><iframe id="preview" sandbox="allow-scripts allow-forms allow-modals allow-popups"></iframe></div></div>
+</div>
+</div>
+</section>
+</div>
+
+<div class="modal" id="nameModal"><div class="modalbox"><h3 id="modalTitle">New Project</h3><p>Project ka naam rakhiye.</p><input id="projectNameInput" maxlength="50" placeholder="e.g. My Website"><div class="modalactions"><button class="ghost" id="cancelModal">Cancel</button><button class="primary" id="createModal">Create</button></div></div></div>
+<div class="menu" id="editorMenu"><button id="renameProject">Rename project</button><button id="duplicateProject">Duplicate project</button><button id="deleteProject" style="color:#ff9da5">Delete project</button></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY="moh2it_c0de_projects_v1";
+const starter=`<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#10131a;color:white;font-family:system-ui}
+.card{padding:28px;border:1px solid #343b48;border-radius:20px;background:#171c25;text-align:center}
+button{padding:12px 18px;border:0;border-radius:12px;background:#eaf2ec;color:#10140f;font-weight:700}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Hello, Mohit 👋</h1>
+<p>Edit this code and press Preview.</p>
+<button onclick="alert('It works!')">Test Button</button>
+</div>
+</body>
+</html>`;
+let projects=JSON.parse(localStorage.getItem(KEY)||"[]"),currentId=null,searchPos=-1,installPrompt=null;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function saveAll(){localStorage.setItem(KEY,JSON.stringify(projects))}
+function toast(t){let e=$("#toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),1500)}
+function show(id){$$(".screen").forEach(x=>x.classList.remove("active"));$("#"+id).classList.add("active")}
+function renderProjects(){
+ const box=$("#projects");box.innerHTML="";
+ if(!projects.length){box.innerHTML='<div class="empty"><strong>No projects yet</strong>Tap “New Project” to create your first workspace.</div>';return}
+ projects.forEach(p=>{
+  const e=document.createElement("button");e.className="project";e.innerHTML=`<h3>${esc(p.name)}</h3><p>${new Date(p.updated).toLocaleString()}<br>Saved on this device</p><button class="more" type="button">⋮</button>`;
+  e.addEventListener("click",ev=>{if(ev.target.classList.contains("more"))return;openProject(p.id)});
+  e.querySelector(".more").addEventListener("click",ev=>{ev.stopPropagation();projectMenu(p.id,e)});
+  box.appendChild(e)
+ })
+}
+function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function openProject(id){currentId=id;let p=projects.find(x=>x.id===id);$("#editorTitle").textContent=p.name;$("#editor").value=p.code;updateLines();show("editorScreen");setView("code")}
+function newProject(){ $("#modalTitle").textContent="New Project";$("#projectNameInput").value="";$("#nameModal").classList.add("show");setTimeout(()=>$("#projectNameInput").focus(),50)}
+function createProject(){
+ let name=$("#projectNameInput").value.trim()||"Untitled Project";
+ let p={id:Date.now().toString(),name,code:starter,updated:Date.now()};
+ projects.unshift(p);saveAll();$("#nameModal").classList.remove("show");openProject(p.id);toast("Project created")}
+function setView(v){
+ $$(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
+ $("#codeView").classList.toggle("active",v==="code");$("#previewView").classList.toggle("active",v==="preview");
+ $("#modebar").style.display=v==="preview"?"flex":"none";if(v==="preview")updatePreview()
+}
+function updateLines(){
+ let n=$("#editor").value.split("\n").length;$("#lines").textContent=Array.from({length:n},(_,i)=>i+1).join("\n");syncScroll()
+}
+function syncScroll(){$("#lines").scrollTop=$("#editor").scrollTop}
+function updateProject(){
+ if(!currentId)return;let p=projects.find(x=>x.id===currentId);p.code=$("#editor").value;p.updated=Date.now();saveAll()
+}
+function updatePreview(){
+ let code=$("#editor").value;$("#preview").srcdoc=code
+}
+function setDevice(d){
+ $("#deviceFrame").className="deviceframe "+d;
+ $$(".device").forEach(b=>b.classList.toggle("active",b.dataset.device===d))
+}
+function doSearch(dir=1){
+ let q=$("#searchInput").value;if(!q){$("#searchCount").textContent="";return}
+ let code=$("#editor").value.toLowerCase(),term=q.toLowerCase(),hits=[],at=0;
+ while((at=code.indexOf(term,at))!==-1){hits.push(at);at+=term.length||1}
+ if(!hits.length){$("#searchCount").textContent="0";return}
+ searchPos=(searchPos+dir+hits.length)%hits.length;let pos=hits[searchPos];
+ $("#editor").focus();$("#editor").setSelectionRange(pos,pos+q.length);
+ let line=code.slice(0,pos).split("\n").length;$("#searchCount").textContent=`${searchPos+1}/${hits.length}`;$("#editor").scrollTop=Math.max(0,(line-5)*20)
+}
+function startPlayground(){
+ currentId=null;$("#editorTitle").textContent="Quick Preview";$("#editor").value=starter;updateLines();show("editorScreen");setView("code")
+}
+function projectMenu(id,anchor){
+ currentId=id;$("#editorMenu").style.top=(anchor.getBoundingClientRect().bottom+5)+"px";$("#editorMenu").style.left=Math.min(anchor.getBoundingClientRect().left,innerWidth-202)+"px";$("#editorMenu").classList.add("show")
+}
+function closeMenus(){ $("#homeMenuBox").classList.remove("show");$("#editorMenu").classList.remove("show") }
+$("#newProject").onclick=newProject;$("#playground").onclick=startPlayground;$("#cancelModal").onclick=()=>$("#nameModal").classList.remove("show");$("#createModal").onclick=createProject;
+$("#projectNameInput").onkeydown=e=>{if(e.key==="Enter")createProject()};
+$("#backHome").onclick=()=>{updateProject();renderProjects();show("home");closeMenus()};
+$("#saveBtn").onclick=()=>{updateProject();toast("Saved locally")};
+$("#editorMenuBtn").onclick=()=>$("#editorMenu").classList.toggle("show");
+$("#homeMenu").onclick=()=>$("#homeMenuBox").classList.toggle("show");
+$("#editor").addEventListener("input",()=>{updateLines();if(currentId)updateProject()});
+$("#editor").addEventListener("scroll",syncScroll);
+$("#editor").addEventListener("keydown",e=>{if(e.key==="Tab"){e.preventDefault();let s=e.target.selectionStart,e2=e.target.selectionEnd;e.target.setRangeText("  ",s,e2,"end")}});
+$("#searchInput").oninput=()=>{searchPos=-1;doSearch(1)};$("#nextMatch").onclick=()=>doSearch(1);$("#prevMatch").onclick=()=>doSearch(-1);
+$$(".tab").forEach(b=>b.onclick=()=>setView(b.dataset.view));$$(".device").forEach(b=>b.onclick=()=>setDevice(b.dataset.device));$("#refreshPreview").onclick=updatePreview;
+$("#renameProject").onclick=()=>{let p=projects.find(x=>x.id===currentId);if(!p)return;let n=prompt("New project name",p.name);if(n&&n.trim()){p.name=n.trim();p.updated=Date.now();saveAll();$("#editorTitle").textContent=p.name;renderProjects()}closeMenus()};
+$("#duplicateProject").onclick=()=>{let p=projects.find(x=>x.id===currentId);if(!p)return;let copy={...p,id:Date.now().toString(),name:p.name+" Copy",updated:Date.now()};projects.unshift(copy);saveAll();renderProjects();openProject(copy.id);closeMenus();toast("Project duplicated")};
+$("#deleteProject").onclick=()=>{let p=projects.find(x=>x.id===currentId);if(p&&confirm(`Delete "${p.name}"?`)){projects=projects.filter(x=>x.id!==currentId);saveAll();closeMenus();renderProjects();show("home");toast("Project deleted")}};
+$("#exportAll").onclick=()=>{let blob=new Blob([JSON.stringify(projects,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="moh2it-c0de-projects.json";a.click();URL.revokeObjectURL(a.href);closeMenus()};
+$("#importBtn").onclick=()=>$("#fileInput").click();$("#fileInput").onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!Array.isArray(x))throw 0;projects=[...x,...projects];saveAll();renderProjects();toast("Projects imported")}catch{toast("Invalid project file")}};r.readAsText(f);e.target.value=""};
+$("#clearAll").onclick=()=>{if(projects.length&&confirm("Delete all local projects?")){projects=[];saveAll();renderProjects();toast("All projects deleted")}closeMenus()};
+document.addEventListener("click",e=>{if(!e.target.closest(".menu")&&!e.target.closest("#homeMenu")&&!e.target.closest("#editorMenuBtn"))closeMenus()});
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e});
+$("#installBtn").onclick=async()=>{closeMenus();if(installPrompt){installPrompt.prompt();installPrompt=null}else toast("Browser menu se Add to Home screen choose karein")};
+if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js"));
+renderProjects();
+</script>
+</body>
+</html>
